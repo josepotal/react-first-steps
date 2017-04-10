@@ -14,7 +14,6 @@ firebase.initializeApp(config)
 
 @autobind
 class Inventory extends React.Component {
-  
   constructor() {
     super();
     this.state = {
@@ -23,14 +22,14 @@ class Inventory extends React.Component {
   }
 
   authenticate() {
-    console.log("Trying to auth with" )
-    const provider = new firebase.auth.GithubAuthProvider()
+    console.log("Trying to auth with" );
+    const provider = new firebase.auth.GithubAuthProvider();
     firebase.auth().signInWithPopup(provider)
       .then(result => {
-        console.log(result.user)
+        console.log(result.user);
 
-      console.log(this.props.params.storeId)
-      const storeRef = firebase.database().ref(`${this.props.params.storeId}`)
+      console.log(this.props.params.storeId);
+      const storeRef = firebase.database().ref(`${this.props.params.storeId}`);
       console.log(storeRef)
 
       storeRef.on('value', (snapshot) => {

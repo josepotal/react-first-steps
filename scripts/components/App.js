@@ -28,7 +28,7 @@ var App = React.createClass({
     }
   },
   componentDidMount : function() {
-    base.syncState(this.props.params.storeId + 'fishes', {
+    base.syncState(this.props.params.storeId + '/fishes', {
       context : this,
       state : 'fishes'
     });

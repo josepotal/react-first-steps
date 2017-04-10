@@ -1,29 +1,31 @@
 /*
   Add Fish Form
-  <AddFishForm/>
+  <AddFishForm />
 */
 
 import React from 'react';
+import autobind from 'autobind-decorator';
 
-
-var AddFishForm = React.createClass({
-  createFish : function(event){
-    //stop the form
-    event.preventDefault()
-    // take the data and create and object
+@autobind
+class AddFishForm extends React.Component {
+  createFish(event) {
+    // 1. Stop the form from submitting
+    event.preventDefault();
+    // 2. Take the data from the form and create an object
     var fish = {
-      name: this.refs.name.value,
-      price: this.refs.price.value,
-      status: this.refs.status.value,
-      desc: this.refs.desc.value,
-      image: this.refs.image.value
+      name : this.refs.name.value,
+      price : this.refs.price.value,
+      status : this.refs.status.value,
+      desc : this.refs.desc.value,
+      image : this.refs.image.value
     }
-    //Add the fish to App state
+
+    // 3. Add the fish to the App State
     this.props.addFish(fish);
     this.refs.fishForm.reset();
+  }
 
-  },
-  render: function() {
+  render() {
     return (
       <form className="fish-edit" ref="fishForm" onSubmit={this.createFish}>
         <input type="text" ref="name" placeholder="Fish Name"/>
@@ -38,6 +40,6 @@ var AddFishForm = React.createClass({
       </form>
     )
   }
-})
+};
 
 export default AddFishForm;
